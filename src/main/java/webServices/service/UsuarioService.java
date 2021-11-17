@@ -3,10 +3,8 @@ package webServices.service;
 import org.springframework.stereotype.Service;
 import webServices.domain.TipoUsuario;
 import webServices.domain.Usuario;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static webServices.controller.UsuarioController.locadorLogado;
 import static webServices.controller.UsuarioController.locatarioLogado;
 
@@ -31,12 +29,17 @@ public class UsuarioService {
         }
         return null;
     }
-    public void delete(String user){
+    public String delete(String user){
+        String resposta=null;
         for(int i=0; i<listaUsuarios.size();i++){
-            if(listaUsuarios.get(i).getUser().equals(user))
+            if(listaUsuarios.get(i).getUser().equals(user)){
                 listaUsuarios.remove(i);
+                resposta="Removido com sucesso!!";
+            }else{
+               resposta="Usuario não encontrado!!";
+            }
         }
-        System.out.println("Removido com sucesso!!");
+        return resposta;
     }
 
     public String valida(String user, String senha) {
