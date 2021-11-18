@@ -17,13 +17,11 @@ public class UsuarioController {
     UsuarioService usuarioService ;
     @PostMapping
     public void cadastro(@RequestBody Usuario usuario){
-         usuarioService.cadastraUsuario(usuario);
+        usuarioService.cadastraUsuario(usuario);
     }
     @PostMapping("/login/{user}/{senha}")
     public String login(@PathVariable String user,@PathVariable String senha){
         return usuarioService.valida(user,senha);
-
-
     }
     @GetMapping("/iniciar")
     public void iniciar(){
@@ -39,6 +37,7 @@ public class UsuarioController {
     }
     @DeleteMapping("/{user}")
     public void delete(@PathVariable String user){
+
         usuarioService.delete(user);
     }
 

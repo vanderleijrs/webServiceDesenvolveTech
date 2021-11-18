@@ -12,14 +12,20 @@ class UsuarioServiceTest {
     @BeforeEach
     public void beforeAll() {
         usuarioService =new UsuarioService();
-        usuario=new Usuario("Van","8", TipoUsuario.LOCADOR);
         usuarioService.iniciar();
     }
 
     @Test
     void cadastraUsuario() {
-        Usuario usuarioSalvo= usuarioService.cadastraUsuario(usuario);
-        Assertions.assertEquals(usuarioSalvo.getSenha(),"8");
+        usuario=new Usuario("Vanessa","234", TipoUsuario.LOCADOR);
+        String  usuarioSalvo= usuarioService.cadastraUsuario(usuario);
+        Assertions.assertEquals(usuarioSalvo,"Usuario cadastrado com sucesso!!");
+    }
+    @Test
+    void usuarioJaExiste() {
+        usuario=new Usuario("Van","8", TipoUsuario.LOCADOR);
+        String usuarioSalvo= usuarioService.cadastraUsuario(usuario);
+        Assertions.assertEquals(usuarioSalvo,"Usuario já existe!!");
     }
 
     @Test

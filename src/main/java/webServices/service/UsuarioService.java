@@ -15,12 +15,19 @@ public class UsuarioService {
         listaUsuarios.add(new Usuario("Van","8", TipoUsuario.LOCADOR));
         listaUsuarios.add(new Usuario("Vitor","9", TipoUsuario.LOCATARIO));
     }
-    public Usuario cadastraUsuario(Usuario usuario){
-        listaUsuarios.add(usuario);
-        return usuario;
+    public String cadastraUsuario(Usuario usuario){
+        String resposta=null;
+       if(buscaUsuario(usuario.getUser())==null){
+           listaUsuarios.add(usuario);
+           resposta="Usuario cadastrado com sucesso!!";
+       } else{
+           resposta="Usuario já existe!!";
+       }
+        return resposta;
     }
     public List busca(){
-       return listaUsuarios;
+
+        return listaUsuarios;
     }
     public Usuario buscaUsuario(String user){
         for(int i=0; i<listaUsuarios.size();i++){
